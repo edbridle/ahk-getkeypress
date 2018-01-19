@@ -1,2 +1,2 @@
 # ahk-getkeypress
-ahk script getkeypress
+ahk scripting codes for getkeypress 
