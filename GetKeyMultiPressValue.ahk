@@ -39,6 +39,9 @@ loop
 {
 RegRead, KeypressValue, HKEY_CURRENT_USER,software\GetKeypressValue,KeypressValue ; read KeypressValue
 
+If not GetKeyState("Ctrl","P") and not GetKeyState("Alt","P") and not GetKeyState("LWin","P") and not GetKeyState("RWin","P")
+{
+
 ;you can OneClick Ctrl + c for [copy the text]
 ;And you can doubleClick Ctrl + c for [copy the text] + [Do a google search with query parameters (100 search results + us results)]
 if (KeypressValue="Ctrl + c, c") ;use this for [1x=Ctrl c][2x=Ctr c, c][3x=Ctr c (3)] [and many more]
@@ -145,12 +148,11 @@ clipboard=%textb%
 reload
 }
 
+} ; End GetKeyState
+
 sleep 50
 GuiControl,, var, %KeypressValue%
-}
-
-
-;End Loop
+} ;End Loop
 
 
 
@@ -228,3 +230,5 @@ clipboard=%textb%
 }
 RegWrite, REG_SZ, HKEY_CURRENT_USER,software\GetKeypressValue,KeypressValue,Alt+v=WikiPedia.Search  ;clear the KeypressValue
 return
+
+
